@@ -1,0 +1,71 @@
+
+<!DOCTYPE html>
+
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8"/>
+<title>倒數計時器</title>
+<style>
+    body {
+      background-color: #CDE1EB;
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    .countdown-container {
+      display: flex;
+      align-items: flex-start;
+      width: max-content;
+    }
+    .days-left {
+      font-size: 70px;
+      color: #FFC000;
+      margin-left: 0.3cm;
+      margin-right: 0.5cm;
+    }
+    .label-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 0.1cm;
+    }
+    .days-label {
+      font-size: 28px;
+      color: #FFC000;
+    }
+    .to-go-label {
+      font-size: 28px;
+      color: #F7F7F7;
+      margin-top: 0.3cm;
+    }
+    .description {
+      margin-top: 0.4cm;
+      font-size: 16px;
+      color: #183A68;
+    }
+  </style>
+</head>
+<body>
+<div class="countdown-container">
+<div class="days-left" id="countdown-days" style="; font-size:70px; font-weight:bold; margin-left:-0.5cm; margin-left:0.2cm;"></div>
+<div class="label-container">
+<div class="days-label" style=";margin-left:-0.2cm;">DAYS</div>
+<div class="to-go-label" style=";margin-left:-0.2cm;">TO GO</div>
+</div>
+</div>
+<div class="description">
+<div><span style="display:block; margin-left:0.6cm;">We're counting down to</span></div><div><span style="display:block; margin-left:0.3cm;">the 1st pin pile installation</span></div>
+</div>
+<script>
+    function updateCountdown() {
+      const targetDate = new Date("2026-02-26");
+      const today = new Date();
+      const timeDiff = targetDate - today;
+      const daysLeft = Math.max(0, Math.ceil(timeDiff / (1000 * 60 * 60 * 24)));
+      document.getElementById("countdown-days").textContent = daysLeft;
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 86400000); // 每天更新一次
+  </script>
+</body>
+</html>
